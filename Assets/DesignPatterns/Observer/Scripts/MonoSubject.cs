@@ -9,15 +9,18 @@ using UnityEngine;
 public class MonoSubject : MonoBehaviour, Subject
 {
     List<Observer> observers = new List<Observer>(); //옵저버들을 관리하는 List
+    private int number;
+    public int getNumber() { return number; }
 
     private void Start()
     {
-        var observer1 = new Observer1();
-        var observer2 = new Observer2();
+        number = 10;
+
+        var observer1 = new Observer1(gameObject);
+        var observer2 = new Observer2(gameObject);
 
         Subscribe(observer1);
         Subscribe(observer2);
-   
     }
     /// <summary>
     /// 관리중인 옵저버들에게 연락을 하는 기능을 가진 메소드
@@ -26,7 +29,7 @@ public class MonoSubject : MonoBehaviour, Subject
     {
         foreach(Observer observer in observers)
         {
-            observer.OnNotify();
+            observer.OnNotify(number);
         }
     }
     public void Subscribe(Observer observer)

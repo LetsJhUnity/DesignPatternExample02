@@ -8,14 +8,10 @@ public class HP_PSubject : MonoBehaviour, PSubject
     private List<PObserver> m_PObservers = new List<PObserver> ();
     private float m_HP;
     private float enemy_HP;
-    private float m_MaxHP;
-    private float e_MaxHP;
     private void Start()
     {
         m_HP = 100;
         enemy_HP = 100;
-        m_MaxHP = m_HP;
-        e_MaxHP = enemy_HP;
         var MHP = GetComponent<PmHpObserver>();
         var EHP = GetComponent<PeHpObserver>();
 
